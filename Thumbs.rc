@@ -1,0 +1,6 @@
+//Default images for the thumbs
+1100		BITMAP MOVEABLE PURE "DefaultThumbNormal.bmp"
+1200		BITMAP MOVEABLE PURE "DefaultThumbHot.bmp"
+1300		BITMAP MOVEABLE PURE "DefaultThumbPressed.bmp"
+1400		BITMAP MOVEABLE PURE "DefaultThumbDiss.bmp"
+//
