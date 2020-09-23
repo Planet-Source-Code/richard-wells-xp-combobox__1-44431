@@ -1,0 +1,47 @@
+Read me b4 trying to run the project
+
+Attention VB6`ers
+This example uses a subclassing component called SSUBTMR6.DLL which allows all of the mouse over and owner drawing stuff to happen.
+This example wont work without it, if you don't have the .dll,  First go to 
+http://www.vbaccelerator.com/home/VB/Code/Libraries/Subclassing/SSubTimer/article.asp and down load it. Second, install the .dll into you System directory then register the .dll using the many different registration tools available.
+Third, Fire up the project and on the main menu click Project>References and browse for something that looks like this
+vbAccelerator VB6 Subclassing and Timer Assistant (with configurable message response, multi-control support + timer bug fix) and check it in the list if you cant find it click the browse button and look for the .dll in your system directory. If all goes well here the project should work.
+
+
+
+Attention VB5`ers
+There are both VB6 and VB5 Versions of the .dll available at the site.
+The above procedure is the same only the .dll and description is different although you will have to make a modification to the cXPCombo class
+
+My example looks like this
+
+Private Property Let ISubclass_MsgResponse(ByVal RHS As SSubTimer6.EMsgResponse)
+    '
+End Property
+
+Private Property Get ISubclass_MsgResponse() As SSubTimer6.EMsgResponse
+    If (CurrentMessage = WM_TIMER) Then
+        ISubclass_MsgResponse = emrPostProcess
+    Else
+        ISubclass_MsgResponse = emrPreprocess
+    End If
+End Property
+
+You need to do this
+
+Private Property Let ISubclass_MsgResponse(ByVal RHS As SSubTimer.EMsgResponse)
+    '
+End Property
+
+Private Property Get ISubclass_MsgResponse() As SSubTimer.EMsgResponse
+    If (CurrentMessage = WM_TIMER) Then
+        ISubclass_MsgResponse = emrPostProcess
+    Else
+        ISubclass_MsgResponse = emrPreprocess
+    End If
+End Property
+
+Just remove the 6 at the end of the SsubTimer6 and all should work
+Good luck.
+
+Will reply if you get into trouble.
